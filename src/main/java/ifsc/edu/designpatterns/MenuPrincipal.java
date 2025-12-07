@@ -75,7 +75,7 @@ public class MenuPrincipal {
             System.out.print("Nome: ");
             String nome = scanner.nextLine().trim();
 
-            System.out.print("CPF (xxx.xxx.xxx-xx): ");
+            System.out.print("CPF: ");
             String cpf = scanner.nextLine().trim();
 
             System.out.print("Idade: ");
@@ -112,7 +112,7 @@ public class MenuPrincipal {
             System.out.print("Nome: ");
             String nome = scanner.nextLine().trim();
 
-            System.out.print("CRM (xxxxxx/SC): ");
+            System.out.print("CRM: ");
             String crm = scanner.nextLine().trim();
 
             System.out.print("Especialidade: ");
@@ -121,7 +121,7 @@ public class MenuPrincipal {
             Medico medico = new Medico(nome, crm, especialidade);
             hospital.adicionarMedico(medico);
             System.out.println("Médico cadastrado com sucesso!");
-            System.out.println("Gerenciado pelo Singleton: HospitalManager");
+            System.out.println("Gerenciado pelo HospitalManager(Padrão Singleton)");
 
         } catch (Exception e) {
             System.out.println("Erro ao processar dados!");
@@ -156,11 +156,11 @@ public class MenuPrincipal {
                     AtendimentoEmergenciaAdapter adapter = new AtendimentoEmergenciaAdapter();
                     adapter.realizarAtendimento(paciente, descricao);
                 }
-                default -> System.out.println("❌ Tipo de atendimento inválido!");
+                default -> System.out.println("Tipo de atendimento inválido!");
             }
 
         } catch (NumberFormatException e) {
-            System.out.println("❌ Entrada inválida!");
+            System.out.println("Entrada inválida!");
         }
     }
 
