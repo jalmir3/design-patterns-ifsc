@@ -32,19 +32,18 @@ public class MenuPrincipal {
     }
 
     private static void exibirMenuPrincipal() {
-        log.info("\n{}", "=".repeat(80));
-        log.info("SISTEMA DE GERENCIAMENTO DE HOSPITAL");
-        log.info("Padrões de Projeto: Singleton, Builder, Adapter, Observer");
-        log.info("=".repeat(80));
-        log.info("\n1. Cadastrar Paciente (Padrão: BUILDER)");
-        log.info("2. Cadastrar Médico (Padrão: SINGLETON)");
-        log.info("3. Realizar Atendimento (Padrão: ADAPTER)");
-        log.info("4. Enviar Notificações (Padrão: OBSERVER)");
-        log.info("5. Listar Pacientes");
-        log.info("6. Listar Médicos");
-        log.info("7. Estatísticas do Hospital");
-        log.info("8. Sair");
-        log.info("\nEscolha uma opção: ");
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("SISTEMA DE GERENCIAMENTO DE HOSPITAL");
+        System.out.println("=".repeat(80));
+        System.out.println("\n1. Cadastrar Paciente (Padrão: BUILDER)");
+        System.out.println("2. Cadastrar Médico (Padrão: SINGLETON)");
+        System.out.println("3. Realizar Atendimento (Padrão: ADAPTER)");
+        System.out.println("4. Enviar Notificações (Padrão: OBSERVER)");
+        System.out.println("5. Listar Pacientes");
+        System.out.println("6. Listar Médicos");
+        System.out.println("7. Estatísticas do Hospital");
+        System.out.println("8. Sair");
+        System.out.print("\nEscolha uma opção: ");
     }
 
     private static void processarOpcao() {
@@ -60,32 +59,32 @@ public class MenuPrincipal {
                 case 6 -> listarMedicos();
                 case 7 -> exibirEstatisticas();
                 case 8 -> sair = true;
-                default -> log.warn("Opção inválida! Tente novamente.");
+                default -> System.out.println("Opção inválida! Tente novamente.");
             }
         } catch (NumberFormatException e) {
-            log.error("Entrada inválida! Digite um número.");
+            System.out.println("Entrada inválida! Digite um número.");
         }
     }
 
     private static void cadastrarPaciente() {
-        log.info("\n{}", "-".repeat(80));
-        log.info("CADASTRAR PACIENTE (Padrão Builder)");
-        log.info("-".repeat(80));
+        System.out.println("\n" + "-".repeat(80));
+        System.out.println("CADASTRAR PACIENTE (Padrão Builder)");
+        System.out.println("-".repeat(80));
 
         try {
-            log.info("Nome: ");
+            System.out.print("Nome: ");
             String nome = scanner.nextLine().trim();
 
-            log.info("CPF: ");
+            System.out.print("CPF (xxx.xxx.xxx-xx): ");
             String cpf = scanner.nextLine().trim();
 
-            log.info("Idade: ");
+            System.out.print("Idade: ");
             int idade = Integer.parseInt(scanner.nextLine().trim());
 
-            log.info("Email: ");
+            System.out.print("Email: ");
             String email = scanner.nextLine().trim();
 
-            log.info("Telefone: ");
+            System.out.print("Telefone: ");
             String telefone = scanner.nextLine().trim();
 
             Paciente paciente = new Paciente.Builder()
@@ -97,56 +96,55 @@ public class MenuPrincipal {
                     .build();
 
             hospital.adicionarPaciente(paciente);
-            log.info("Paciente cadastrado com sucesso!");
+            System.out.println("Paciente cadastrado com sucesso!");
 
         } catch (NumberFormatException e) {
-            log.error("Erro ao processar dados! Verifique a entrada.");
+            System.out.println("Erro ao processar dados! Verifique a entrada.");
         }
     }
 
     private static void cadastrarMedico() {
-        log.info("\n{}", "-".repeat(80));
-        log.info("CADASTRAR MÉDICO (Padrão Singleton)");
-        log.info("-".repeat(80));
+        System.out.println("\n" + "-".repeat(80));
+        System.out.println("CADASTRAR MÉDICO (Padrão Singleton)");
+        System.out.println("-".repeat(80));
 
         try {
-            log.info("Nome: ");
+            System.out.print("Nome: ");
             String nome = scanner.nextLine().trim();
 
-            log.info("CRM: ");
+            System.out.print("CRM (xxxxxx/SC): ");
             String crm = scanner.nextLine().trim();
 
-            log.info("Especialidade: ");
+            System.out.print("Especialidade: ");
             String especialidade = scanner.nextLine().trim();
 
             Medico medico = new Medico(nome, crm, especialidade);
             hospital.adicionarMedico(medico);
-            log.info("Médico cadastrado com sucesso!");
-            log.info("Gerenciado pelo HospitalManager(Padrão Singleton).");
+            System.out.println("Médico cadastrado com sucesso!");
+            System.out.println("Gerenciado pelo Singleton: HospitalManager");
 
         } catch (Exception e) {
-            log.error("Erro ao processar dados!");
+            System.out.println("Erro ao processar dados!");
         }
     }
 
     private static void realizarAtendimento() {
-        log.info("\n{}", "-".repeat(80));
-        log.info("REALIZAR ATENDIMENTO (Padrão Adapter)");
-        log.info("-".repeat(80));
+        System.out.println("\n" + "-".repeat(80));
+        System.out.println("REALIZAR ATENDIMENTO (Padrão Adapter)");
+        System.out.println("-".repeat(80));
 
         try {
-            log.info("\nTipo de Atendimento:");
-            log.info("1. Consulta");
-            log.info("2. Exame");
-            log.info("3. Emergência");
-            log.info("4. Cirurgia");
+            System.out.println("\nTipo de Atendimento:");
+            System.out.println("1. Consulta");
+            System.out.println("2. Emergência");
+            System.out.print("Escolha: ");
 
             int tipo = Integer.parseInt(scanner.nextLine().trim());
 
-            log.info("Nome do Paciente: ");
+            System.out.print("Nome do Paciente: ");
             String paciente = scanner.nextLine().trim();
 
-            log.info("Descrição do Atendimento: ");
+            System.out.print("Descrição do Atendimento: ");
             String descricao = scanner.nextLine().trim();
 
             switch (tipo) {
@@ -158,23 +156,24 @@ public class MenuPrincipal {
                     AtendimentoEmergenciaAdapter adapter = new AtendimentoEmergenciaAdapter();
                     adapter.realizarAtendimento(paciente, descricao);
                 }
-                default -> log.warn("Tipo de atendimento inválido!");
+                default -> System.out.println("❌ Tipo de atendimento inválido!");
             }
 
         } catch (NumberFormatException e) {
-            log.error("Entrada inválida!");
+            System.out.println("❌ Entrada inválida!");
         }
     }
 
     private static void enviarNotificacoes() {
-        log.info("\n{}", "-".repeat(80));
-        log.info("Enviar notificações (Padrão Observer)");
-        log.info("-".repeat(80));
+        System.out.println("\n" + "-".repeat(80));
+        System.out.println("ENVIAR NOTIFICAÇÕES (Padrão Observer)");
+        System.out.println("-".repeat(80));
 
         try {
-            log.info("\nTipo de Atendimento:");
-            log.info("1. Consulta");
-            log.info("2. Emergencia");
+            System.out.println("\nTipo de Atendimento:");
+            System.out.println("1. Consulta");
+            System.out.println("2. Emergência");
+            System.out.print("Escolha: ");
 
             int tipo = Integer.parseInt(scanner.nextLine().trim());
             TipoAtendimento tipoAtendimento = switch (tipo) {
@@ -184,77 +183,78 @@ public class MenuPrincipal {
             };
 
             if (tipoAtendimento == null) {
-                log.warn("Tipo invalido!");
+                System.out.println("Tipo inválido!");
                 return;
             }
 
-            log.info("Nome do Paciente: ");
+            System.out.print("Nome do Paciente: ");
             String paciente = scanner.nextLine().trim();
 
-            log.info("Mensagem: ");
+            System.out.print("Mensagem: ");
             String mensagem = scanner.nextLine().trim();
 
             gerenciador.notificarObservadores(tipoAtendimento, paciente, mensagem);
-            log.info("Notificações enviadas para todos os canais!");
+            System.out.println("Notificações enviadas para todos os canais!");
 
         } catch (NumberFormatException e) {
-            log.error("Entrada inválida!");
+            System.out.println("Entrada inválida!");
         }
     }
 
     private static void listarPacientes() {
-        log.info("\n{}", "-".repeat(80));
-        log.info(" PACIENTES CADASTRADOS");
-        log.info("-".repeat(80));
+        System.out.println("\n" + "-".repeat(80));
+        System.out.println("PACIENTES CADASTRADOS");
+        System.out.println("-".repeat(80));
 
         if (hospital.listarPacientes().isEmpty()) {
-            log.info("Nenhum paciente cadastrado.");
+            System.out.println("Nenhum paciente cadastrado.");
         } else {
             hospital.listarPacientes().forEach(p -> {
-                log.info("\n• {}", p.getNome());
-                log.info("  CPF: {}", p.getCpf());
-                log.info("  Idade: {} anos", p.getIdade());
-                log.info("  Email: {}", p.getEmail());
-                log.info("  Telefone: {}", p.getTelefone());
+                System.out.println("\n• " + p.getNome());
+                System.out.println("  CPF: " + p.getCpf());
+                System.out.println("  Idade: " + p.getIdade() + " anos");
+                System.out.println("  Email: " + p.getEmail());
+                System.out.println("  Telefone: " + p.getTelefone());
             });
         }
     }
 
     private static void listarMedicos() {
-        log.info("\n{}", "-".repeat(80));
-        log.info("  MÉDICOS CADASTRADOS");
-        log.info("-".repeat(80));
+        System.out.println("\n" + "-".repeat(80));
+        System.out.println("MÉDICOS CADASTRADOS");
+        System.out.println("-".repeat(80));
 
         if (hospital.listarMedicos().isEmpty()) {
-            log.info("Nenhum médico cadastrado.");
+            System.out.println("Nenhum médico cadastrado.");
         } else {
             hospital.listarMedicos().forEach(m -> {
-                log.info("\n• " + m.getNome());
-                log.info("  CRM: " + m.getCrm());
-                log.info("  Especialidade: " + m.getEspecialidade());
+                System.out.println("\n• " + m.getNome());
+                System.out.println("  CRM: " + m.getCrm());
+                System.out.println("  Especialidade: " + m.getEspecialidade());
             });
         }
     }
 
     private static void exibirEstatisticas() {
-        log.info("\n{}", "=".repeat(80));
-        log.info("ESTATÍSTICAS DO HOSPITAL");
-        log.info("=".repeat(80));
-        log.info("Total de Pacientes: {}", hospital.getTotalPacientes());
-        log.info("Total de Médicos: {}", hospital.getTotalMedicos());
-        log.info("Total de Observadores Ativos: {}", gerenciador.getTotalObservadores());
-        log.info("=".repeat(80));
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("ESTATÍSTICAS DO HOSPITAL");
+        System.out.println("=".repeat(80));
+        System.out.println("Total de Pacientes: " + hospital.getTotalPacientes());
+        System.out.println("Total de Médicos: " + hospital.getTotalMedicos());
+        System.out.println("Total de Observadores Ativos: " + gerenciador.getTotalObservadores());
+        System.out.println("=".repeat(80));
     }
 
     private static void inicializarObservadores() {
         gerenciador.registrarObservador(new NotificadorEmail());
         gerenciador.registrarObservador(new NotificadorSMS());
+        log.info("Observadores inicializados com sucesso");
     }
 
     private static void finalizarAplicacao() {
-        log.info("\n{}", "=".repeat(80));
-        log.info("Agradecemos por utilizar o nosso serviço(Jalmir,Hanelly e Henrique!");
-        log.info("{}\n", "=".repeat(80));
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("Obrigado por usar o Sistema de Gerenciamento de Hospital!");
+        System.out.println("=".repeat(80) + "\n");
         scanner.close();
     }
 }
