@@ -11,9 +11,9 @@ import java.util.List;
 @Slf4j
 public class HospitalManager {
     private static HospitalManager instancia;
-    private List<Paciente> pacientes;
-    private List<Medico> medicos;
-    private List<Consulta> consultas;
+    private final List<Paciente> pacientes;
+    private final List<Medico> medicos;
+    private final List<Consulta> consultas;
 
     private HospitalManager() {
         this.pacientes = new ArrayList<>();

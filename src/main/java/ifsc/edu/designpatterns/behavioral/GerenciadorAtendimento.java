@@ -8,7 +8,7 @@ import java.util.List;
 @Slf4j
 public class GerenciadorAtendimento {
 
-    private List<AtendimentoObserver> observadores;
+    private final List<AtendimentoObserver> observadores;
 
     public GerenciadorAtendimento() {
         this.observadores = new ArrayList<>();
