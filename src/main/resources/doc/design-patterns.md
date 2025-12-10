@@ -112,6 +112,15 @@ Essa abordagem resulta em um código mais limpo, manutenível e escalável.
 
 ---
 
+## 4. Vídeos Demonstrativos
+
+Os seguintes vídeos demonstram a implementação e funcionamento dos padrões de projeto utilizados neste projeto:
+
+- [**Video padrões de projeto - Parte 1**](https://drive.google.com/file/d/1W4TH_Ar5qKUCBAAV7wxxYrwm7Fl2saRJ/view?usp=sharing)
+- [**Video padrões de projeto - Parte 2**](https://drive.google.com/file/d/1HUCypLCWwx7lfZgofTiHXS_kzOqfC2Bj/view?usp=sharing)
+
+---
+
 **Data:** 08/12/2025
 **Disciplina:** Padrões de Projeto  
 **Instituição:** Instituto Federal de Santa Catarina

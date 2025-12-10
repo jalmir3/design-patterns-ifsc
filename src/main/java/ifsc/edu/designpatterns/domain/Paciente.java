@@ -51,7 +51,7 @@ public class Paciente {
         }
 
         public Paciente build() {
-            if (this.nome == null || this.cpf == null) {
+            if (this.nome == null || this.cpf == null || this.nome.isEmpty() || this.cpf.isEmpty()) {
                 throw new IllegalArgumentException("Nome e CPF são obrigatórios");
             }
             return new Paciente(this);
